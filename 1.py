@@ -29,11 +29,76 @@ print(
         map(
             (
                 lambda line: (
-                    int(next(iter(c for c in line if c.isdigit()))) * 10
-                    + int(next(iter(c for c in reversed(line) if c.isdigit())))
+                    int(next(c for c in line if c.isdigit())) * 10
+                    + int(next(c for c in reversed(line) if c.isdigit()))
                 )
             ),
             __import__("pathlib").Path("1.input").read_text().splitlines(),
+        )
+    )
+)
+
+# --- Part Two ---
+#
+# Your calculation isn't quite right. It looks like some of the digits are actually spelled out with letters: one, two, three, four, five, six, seven, eight, and nine also count as valid "digits".
+#
+# Equipped with this new information, you now need to find the real first and last digit on each line. For example:
+#
+# two1nine
+# eightwothree
+# abcone2threexyz
+# xtwone3four
+# 4nineeightseven2
+# zoneight234
+# 7pqrstsixteen
+#
+# In this example, the calibration values are 29, 83, 13, 24, 42, 14, and 76. Adding these together produces 281.
+#
+# What is the sum of all of the calibration values?
+
+print(
+    next(
+        (
+            __import__("itertools").starmap(
+                lambda lookup, lines: sum(
+                    map(
+                        lambda mv: (
+                            next(
+                                v
+                                for index in range(len(mv))
+                                for k, v in lookup.items()
+                                for p in k
+                                if mv[index : index + len(p)] == p
+                            )
+                            * 10
+                            + next(
+                                v
+                                for index in reversed(range(len(mv), 0, -1))
+                                for k, v in lookup.items()
+                                for p in k
+                                if mv[-index : len(mv) - index + len(p)] == p
+                            )
+                        ),
+                        map(memoryview, lines),
+                    )
+                ),
+                [
+                    (
+                        {
+                            (b"1", b"one"): 1,
+                            (b"2", b"two"): 2,
+                            (b"3", b"three"): 3,
+                            (b"4", b"four"): 4,
+                            (b"5", b"five"): 5,
+                            (b"6", b"six"): 6,
+                            (b"7", b"seven"): 7,
+                            (b"8", b"eight"): 8,
+                            (b"9", b"nine"): 9,
+                        },
+                        __import__("pathlib").Path("1.input").read_bytes().splitlines(),
+                    )
+                ],
+            )
         )
     )
 )
