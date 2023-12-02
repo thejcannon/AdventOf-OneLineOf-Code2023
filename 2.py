@@ -99,7 +99,7 @@ print(
 
 print(
     (
-        lambda deque, starmap, reduce, mul, limits: sum(
+        lambda deque, starmap, reduce, mul: sum(
             map(
                 lambda line: reduce(
                     mul,
@@ -142,10 +142,5 @@ print(
         __import__("itertools").starmap,
         __import__("functools").reduce,
         __import__("operator").mul,
-        {
-            "red": 12,
-            "green": 13,
-            "blue": 14,
-        },
     )
 )
