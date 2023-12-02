@@ -33,7 +33,7 @@ print(
                     + int(next(c for c in reversed(line) if c.isdigit()))
                 )
             ),
-            __import__("pathlib").Path("1.input").read_text().splitlines(),
+            __import__("pathlib").Path("input/1").read_text().splitlines(),
         )
     )
 )
@@ -95,7 +95,7 @@ print(
                             (b"8", b"eight"): 8,
                             (b"9", b"nine"): 9,
                         },
-                        __import__("pathlib").Path("1.input").read_bytes().splitlines(),
+                        __import__("pathlib").Path("input/1").read_bytes().splitlines(),
                     )
                 ],
             )
