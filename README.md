@@ -9,7 +9,11 @@ All of the solutions are implemented as Python "one-liners" (more specifically, 
 I've also done my best attempt at code that is moderately performant (considering the constraints).
 That means trying to return-early when possible, not parsing strings if unnecessary, etc....
 
-No AI or cheating of any nature was used to make these.
+No AI or cheating (such as writing the code and then using a tool to transform it) of any nature was used to make these.
+
+For most of these, I just wrote the one-liner as-is, without debugging or tests.
+
+I do this because I find the constraints very fun and challenging.
 
 # Tricks
 
