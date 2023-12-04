@@ -34,9 +34,9 @@ The basic toolbox for one-liners is crafted almost exclusively from functional p
 The tricks are as follows:
 
 - Imports: Just use `__import__("<modname>")`
-- Variables: Declare a lambda and immediately call it. The variable is the parameter,
 - Getting the first thing out of an iterable: `next(iterable)`
-- Consuming an entire iterable just for its side-effects: `collections.deque(iterable, maxlen=0)`.
+- Consuming an entire iterable just for its side-effects: `collections.deque(iterable, maxlen=0)`
+- Variables: Declare a lambda and immediately call it. The variable is the parameter,
   and all inner lambdas (which become closures) will be able to reference it. This looks like:
   `(lambda x, y: <expr>)(<expr>, <expr>)`
   - On problem 1, I hadn't figured this out yet, and instead used `next(starmap(lambda x, y, (<pair>)))`
@@ -45,3 +45,6 @@ The tricks are as follows:
   that expression could be a list, and that list could have multiple elements, and those elements
   can be expressions which **must** be evaluated in order to compute their corresponding values
   in the list. :wink:
+  - Or perhaps you know expressions will return a `False`-y value. `(<expr> or <expr>)` is an easy way
+    to have both be evaluated with the result being the result of the second expression, given you know
+    the first expression will always be `False`-y
