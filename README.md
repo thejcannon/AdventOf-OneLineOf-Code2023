@@ -1,4 +1,4 @@
-# AdventOfCode2023 - As Python one-liners
+# Advent Of (One line of) Code 2023
 
 This repo hosts my solutions to 2023's Advent of Code.
 
