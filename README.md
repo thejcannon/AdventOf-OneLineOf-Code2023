@@ -53,3 +53,12 @@ The tricks are as follows:
     to have both be evaluated with the result being the result of the second expression, given you know
     the first expression will always be `False`-y
     Same goes if you know they will return `True`-thy values using `(<expr> and <expr>)`.
+- Assigning to arguments (e.g. during iteration): Anytime you want to iterate and change an input while
+  you're iterating, shove the input into a list, then change that list at index 0.
+  E.g. instead of `x = y` (a statement), do `x_container.__setitem__(0, y)` where `x_container` was
+  initialized to `[x]`.
+- Infinite loops: `itertools.repeat(None)`
+- While `True` loops: `itertools.takewhile(lambda work: ..., (do_work() for _ in itertools.repeat(None)))`
+  Note that `takewhile` means you'll go "one past" your `break` condition, so plan accordingly.
+- Classes: Use the `type` constructor with lambdas as your functions
+  E.g. `type("Whatever", (), {"__init__": lambda self: ..., ...})`
