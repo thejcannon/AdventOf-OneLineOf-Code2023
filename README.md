@@ -52,3 +52,4 @@ The tricks are as follows:
   - Or perhaps you know expressions will return a `False`-y value. `(<expr> or <expr>)` is an easy way
     to have both be evaluated with the result being the result of the second expression, given you know
     the first expression will always be `False`-y
+    Same goes if you know they will return `True`-thy values using `(<expr> and <expr>)`.
