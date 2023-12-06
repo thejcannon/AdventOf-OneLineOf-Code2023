@@ -44,6 +44,9 @@ print(
         )(
             [],
             {},
+            # Make a new class, because `__getitem__` syntax is too nice not to use.
+            # We store the map triplets sorted based on source start, so we can efficiently look it up
+            # using a binary search later.
             type(
                 "Map",
                 (),
@@ -58,6 +61,7 @@ print(
                             )
                         ),
                     ),
+                    # Lookup the number and return the relevant mapped number
                     "__getitem__": lambda self, src_num: (
                         lambda bisected_index: (
                             lambda src_start, dest_start, length: (
