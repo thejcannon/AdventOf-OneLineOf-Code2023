@@ -62,3 +62,11 @@ The tricks are as follows:
   Note that `takewhile` means you'll go "one past" your `break` condition, so plan accordingly.
 - Classes: Use the `type` constructor with lambdas as your functions
   E.g. `type("Whatever", (), {"__init__": lambda self: ..., ...})`
+
+# Journal
+
+- Day 2: I realized that you could just immediately call a lambda for "variables". On Day 1 I used
+  `next(itertools.starmap(lambda var1, var2: ..., [(var1_expor, var2_expr)])`
+- Day 5: I need a `while` loop, which turned out to be of the form `itertools.takewhile(..., (x for x in itertools.repeat(None)))`
+- Day 11: Instead of a lambda for variables, the walrus operator `:=` is actually much more convenient (and likely faster)
+  So. I'm committing to no lambdas for the day.
